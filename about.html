@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About formyproject</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="index.css" />
+    <style>
+        .about-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 50px;
+            background-color: #fff;
+        }
+
+        .about-content {
+            max-width: 50%;
+        }
+
+        .about-content h1 {
+            font-size: 40px;
+            color: #333;
+        }
+
+        .about-content p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin: 20px 0;
+        }
+
+        .image-container {
+            max-width: 40%;
+        }
+
+        .image-container img {
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        #learnMoreBtn {
+            background-color:darkorchid;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        #learnMoreBtn:hover {
+            background-color: #004f99;
+        }
+
+        /* Hidden Section */
+        .hidden {
+            display: none;
+        }
+
+        #moreInfo {
+            padding: 50px;
+            background-color: white;
+        }
+
+        #moreInfo h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        #moreInfo p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Component: Basic Navbar -->
+    <header
+      class="relative z-20 w-full border-b shadow-lg border-b-1 border-slate-200 bg-white/90 shadow-slate-700/5 after:absolute after:top-full after:left-0 after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:border-slate-200 lg:backdrop-blur-sm lg:after:hidden"
+    >
+      <div
+        class="relative mx-auto max-w-full px-6 lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]"
+      >
+        <nav
+          aria-label="main navigation"
+          class="flex h-[5.5rem] items-stretch justify-between font-medium text-slate-700"
+          role="navigation"
+        >
+          <!-- Brand logo -->
+          <a
+            id="WindUI"
+            aria-label="WindUI logo"
+            aria-current="page"
+            class="flex items-center gap-2 py-3 text-lg whitespace-nowrap focus:outline-none lg:flex-1"
+            href="#"
+          >
+            <img src="thinking.png" height="60px" width="60px" />
+            Formyproject.com
+          </a>
+
+          <!-- Mobile trigger -->
+          <button
+            class="relative self-center order-10 visible block w-10 h-10 opacity-100 lg:hidden"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <div
+              class="absolute w-6 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+            >
+              <span
+                aria-hidden="true"
+                class="absolute block h-0.5 w-9/12 -translate-y-2 transform rounded-full bg-slate-900 transition-all duration-300"
+              ></span>
+              <span
+                aria-hidden="true"
+                class="absolute block h-0.5 w-6 transform rounded-full bg-slate-900 transition duration-300"
+              ></span>
+              <span
+                aria-hidden="true"
+                class="absolute block h-0.5 w-1/2 origin-top-left translate-y-2 transform rounded-full bg-slate-900 transition-all duration-300"
+              ></span>
+            </div>
+          </button>
+
+          <!-- Navigation links -->
+          <ul
+            role="menubar"
+            aria-label="Select page"
+            class="invisible absolute top-0 left-0 z-[-1] ml-auto h-screen w-full justify-center overflow-hidden overflow-y-auto overscroll-contain bg-white/90 px-8 pb-12 pt-28 font-medium opacity-0 transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0 lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0 lg:pt-0 lg:opacity-100"
+          >
+            <li role="none" class="flex items-stretch">
+              <a
+                role="menuitem"
+                aria-haspopup="false"
+                class="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8"
+                href="index.html"
+              >
+                <span>Home</span></a
+              >
+            </li>
+            <li role="none" class="flex items-stretch">
+              <a
+                role="menuitem"
+                aria-haspopup="false"
+                class="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8"
+                href="about.html"
+              >
+                <span>About</span>
+              </a>
+            </li>
+            <li role="none" class="flex items-stretch">
+              <a
+                role="menuitem"
+                aria-haspopup="false"
+                class="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8"
+                href="blog.html"
+              >
+                <span>Blog</span>
+              </a>
+            </li>
+            <li role="none" class="flex items-stretch">
+              <a
+                role="menuitem"
+                aria-haspopup="false"
+                class="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8"
+                href="javascript:void(0)"
+              >
+                <span>Pricing</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- End Basic Navbar-->
+
+
+    <main>
+        <section class="about-section">
+            <div class="about-content">
+                <h1>About Formyproject.com</h1>
+                <p>
+                  About fomyproject.com
+
+fomyproject.com is your go-to platform for powerful no-code solutions, tools, and DIY tutorials designed for creators of all skill levels. Whether you’re a hobbyist, entrepreneur, or professional, our goal is to help you build websites, apps, automations, and more—without needing to write a single line of code. We offer a wide range of resources, from step-by-step guides to curated tools, allowing you to bring your ideas to life quickly and efficiently.
+
+Our platform is dedicated to making technology accessible, providing affordable and flexible solutions that cater to creators of all sizes. At fomyproject.com, we believe in empowering innovation through simplicity, helping individuals and businesses unlock their full creative potential with no-code development.
+                </p>
+                <button id="learnMoreBtn">Click to Learn More</button>
+            </div>
+            <div class="image-container">
+                <img src="unboxing.png" alt="About Us Image">
+            </div>
+        </section>
+    
+        <section id="moreInfo" class="hidden">
+            <h2>Our Mission</h2>
+            <p>At fomyproject.com, our mission is to empower creators of all skill levels by providing easy-to-use no-code tools, solutions, and DIY tutorials. We believe that everyone should have the ability to bring their ideas to life without needing coding expertise. Through our curated resources and hands-on guides, we aim to make innovation accessible, helping individuals and businesses unlock their full potential with seamless, affordable, and powerful no-code solutions.</p><br>
+            <hr>
+            <br>
+            <h2>Our Values</h2>
+            <p><pre>At fomyproject.com, we are guided by a set of core values that shape everything we do:
+              
+                1.	Accessibility – We believe innovation should be for everyone. 
+                    Our tools and tutorials are designed to be user-friendly and inclusive, no matter your technical background.
+                2.	Creativity – We encourage limitless creativity by providing resources that help bring 
+                    your unique ideas to life with ease.
+                3.	Empowerment – Our goal is to empower individuals and businesses by eliminating 
+                    technical barriers, enabling anyone to build and grow their projects.
+                4.	Community – We foster a supportive community of creators who learn, share, 
+                    and grow together, offering collaboration and guidance at every step.
+                5.	Affordability – We prioritize cost-effective solutions, ensuring that creators 
+                    of all sizes can access the tools and resources they need without breaking the bank.</pre></p><br>
+            <hr>
+            <br>
+            <h2>Our Founder</h2>
+            <p>About the Founder: Aryaneel Shivam
+
+              Aryaneel Shivam, the visionary founder of fomyproject.com, is an accomplished innovator, author, and aspiring AI/ML specialist with a deep passion for technology and creativity. With a background in Computer Science and Engineering, Aryaneel has always been driven by the desire to make complex technology accessible to all. His expertise in no-code development, data analysis, and entrepreneurial ventures has earned him numerous accolades, including the Best Startup Innovation Award under Assam Startup and IIM Calcutta Innovation Park.
+              
+              Through fomyproject.com, Aryaneel aims to empower creators around the world by providing tools, resources, and tutorials that simplify the development process and encourage innovation without coding.</p>
+        </section>
+
+    
+    </main>
+    <script>
+        // JavaScript to toggle hidden content when the "Learn More" button is clicked
+        document.getElementById('learnMoreBtn').addEventListener('click', function() {
+            var moreInfoSection = document.getElementById('moreInfo');
+            moreInfoSection.classList.toggle('hidden');
+
+            // Change button text based on section visibility
+            if (moreInfoSection.classList.contains('hidden')) {
+                this.textContent = 'Learn More';
+            } else {
+                this.textContent = 'Show Less';
+            }
+        });
+    </script>
+     <footer>
+        <div class="footercontent">
+          <p>Formyproject.com &copy; All rights reserved Aryaneel Shivam</p>
+          <p><span style="color: darkgrey;">Contact: +91 7099152511</span></p>
+          <p><span style="color: darkgrey;">Email: aryaneelshivam@gmail.com</span></p>
+        </div>
+       </footer>
+</body>
+</html>

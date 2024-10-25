@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Learning Resource</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="index.css" />
+    <style>
+      /* Modal hidden initially */
+      .hidden {
+        display: none;
+      }
+      /* Modal background */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.5
+        ); /* Black background with opacity */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Modal content */
+      .modal-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        width: 600px;
+        height: 600px;
+      }
+
+      /* Form styles */
+      #name {
+        width: 100%;
+        height: 40px;
+        border-radius: 10px;
+        border: 1px solid black;
+        margin-bottom: 10px;
+      }
+      #email {
+        width: 100%;
+        height: 40px;
+        border-radius: 10px;
+        border: 1px solid black;
+        margin-bottom: 10px;
+      }
+      #message {
+        width: 100%;
+        height: 200px;
+        border-radius: 10px;
+        border: 1px solid black;
+        margin-bottom: 10px;
+      }
+
+      .modal-actions {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .submit-btn,
+      .cancel-btn {
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .submit-btn {
+        background-color: #4caf50;
+        color: white;
+        width: 50%;
+      }
+
+      .cancel-btn {
+        background-color: #f44336;
+        color: white;
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Component: Basic Navbar -->
+    <header
+      class="relative z-20 w-full border-b shadow-lg border-b-1 border-slate-200 bg-white/90 shadow-slate-700/5 after:absolute after:top-full after:left-0 after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:border-slate-200 lg:backdrop-blur-sm lg:after:hidden"
+    >
+      <div
+        class="relative mx-auto max-w-full px-6 lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]"
+      >
+        <nav
+          aria-label="main navigation"
+          class="flex h-[5.5rem] items-stretch justify-between font-medium text-slate-700"
+          role="navigation"
+        >
+          <!-- Brand logo -->
+          <a
+            id="WindUI"
+            aria-label="WindUI logo"
+            aria-current="page"
+            class="flex items-center gap-2 py-3 text-lg whitespace-nowrap focus:outline-none lg:flex-1"
+            href="#"
+          >
+            <img src="thinking.png" height="60px" width="60px" />
+            Formyproject.com
+          </a>
+
+          <!-- Mobile trigger -->
+          <button
+            class="relative self-center order-10 visible block w-10 h-10 opacity-100 lg:hidden"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <div
+              class="absolute w-6 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+            >
+              <span
+                aria-hidden="true"
+                class="absolute block h-0.5 w-9/12 -translate-y-2 transform rounded-full bg-slate-900 transition-all duration-300"
+              ></span>
+              <span
+                aria-hidden="true"
+                class="absolute block h-0.5 w-6 transform rounded-full bg-slate-900 transition duration-300"
+              ></span>
+              <span
+                aria-hidden="true"
+                class="absolute block h-0.5 w-1/2 origin-top-left translate-y-2 transform rounded-full bg-slate-900 transition-all duration-300"
+              ></span>
+            </div>
+          </button>
+
+          <!-- Navigation links -->
+          <ul
+            role="menubar"
+            aria-label="Select page"
+            class="invisible absolute top-0 left-0 z-[-1] ml-auto h-screen w-full justify-center overflow-hidden overflow-y-auto overscroll-contain bg-white/90 px-8 pb-12 pt-28 font-medium opacity-0 transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0 lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0 lg:pt-0 lg:opacity-100"
+          >
+            <li role="none" class="flex items-stretch">
+              <a
+                role="menuitem"
+                aria-haspopup="false"
+                class="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8"
+                href="index.html"
+              >
+                <span>Home</span></a
+              >
+            </li>
+            <li role="none" class="flex items-stretch">
+              <a
+                role="menuitem"
+                aria-haspopup="false"
+                class="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8"
+                href="about.html"
+              >
+                <span>About</span>
+              </a>
+            </li>
+            <li role="none" class="flex items-stretch">
+              <a
+                role="menuitem"
+                aria-haspopup="false"
+                class="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8"
+                href="blog.html"
+              >
+                <span>Blog</span>
+              </a>
+            </li>
+            <li role="none" class="flex items-stretch">
+              <a
+                role="menuitem"
+                aria-haspopup="false"
+                class="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8"
+                href="#pricing"
+              >
+                <span>Pricing</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- End Basic Navbar-->
+
+    <!--Hero Section-->
+    <div class="hero">
+      <div class="heromain">
+        <div class="inner">
+          <div class="heading">
+            <h1
+              class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-pink-500"
+            >
+              A list of
+              <span style="color: darkslateblue">no-code resources</span> for
+              your next project
+            </h1>
+          </div>
+          <div>
+            <img
+              src="https://opendoodles.s3-us-west-1.amazonaws.com/clumsy.png"
+              class="headimage"
+            />
+          </div>
+        </div>
+        <div class="buttondiv">
+          <button
+            id="popupBtn"
+            class="inline-flex items-center justify-center h-12 gap-2 px-6 text-lg font-medium tracking-wide text-white transition duration-300 rounded focus-visible:outline-none whitespace-nowrap bg-black"
+          >
+            <span>Start your journey</span></button
+          >&nbsp; &nbsp;
+          <button
+            onclick="window.location.href='about.html'"
+            class="inline-flex items-center justify-center h-12 gap-2 px-6 text-lg font-medium tracking-wide transition duration-300 border rounded focus-visible:outline-none whitespace-nowrap border-black text-black hover:border-black"
+          >
+            <span>About us</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- Custom Alert Modal with Contact Form -->
+    <div id="contactAlertModal" class="modal hidden">
+      <div class="modal-content">
+        <h1>Contact Us</h1>
+        <form id="contactForm">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required></textarea>
+          <br />
+          <div class="modal-actions">
+            <button type="submit" class="submit-btn">Submit</button>&nbsp;
+            <button type="button" id="cancelBtn" class="cancel-btn">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!--Features Section-->
+    <!-- Component: Feature item with icon and text -->
+    <div class="feature">
+      <div class="f-content">
+        <h1
+          class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-black dark:text-black"
+        >
+          Paid and
+          <mark class="px-2 text-white bg-blue-600 rounded dark:bg-blue-500"
+            >free</mark
+          >
+          no-code tools and resources
+        </h1>
+        <p
+          class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400"
+        >
+          Discover top paid and free no-code tools to easily create websites,
+          apps, and automations—no coding skills required. Start building today!
+        </p>
+      </div>
+
+      <div class="f-content">
+        <h1
+          class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-black dark:text-black"
+        >
+          Reasonable
+          <mark class="px-2 text-white bg-blue-600 rounded dark:bg-orange-500"
+            >pricing plans</mark
+          >
+          for creators of all sizes
+        </h1>
+        <p
+          class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400"
+        >
+          Affordable pricing plans designed for creators of all sizes. Scale
+          your projects with flexible options that fit any budget!
+        </p>
+      </div>
+
+      <div class="f-content">
+        <h1
+          class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-black dark:text-black"
+        >
+          Curated online
+          <mark class="px-2 text-white bg-blue-600 rounded dark:bg-green-500"
+            >learning resources</mark
+          >
+          for you
+        </h1>
+        <p
+          class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400"
+        >
+          Handpicked online learning resources tailored to your needs. Gain new
+          skills and knowledge with courses designed just for you!
+        </p>
+      </div>
+    </div>
+    <!-- End Feature item with icon and text -->
+    <hr />
+
+    <!--Dynamic cards-->
+    <div class="dynamic-cards">
+      <div id="card-container"></div>
+    </div>
+
+    <hr />
+    <!--Pricing section-->
+    <div class="tableheading" id="pricing">
+      <h2>
+        <b
+          ><mark class="px-2 text-white bg-blue-600 rounded dark:bg-green-500"
+            >Reasonable</mark
+          >
+          Pricing for All 👇</b
+        >
+      </h2>
+    </div>
+    <div class="pricing-container">
+      <div class="pricing-plan">
+        <div class="plan-name">Free Tier</div>
+        <div class="plan-price">
+          $0<span style="font-size: 1rem">/month</span>
+        </div>
+        <ul class="plan-features">
+          <li>Basic Features</li>
+          <li>1 User</li>
+          <li>100 MB Storage</li>
+          <li>Email Support</li>
+        </ul>
+        <button class="plan-button">Get Started</button>
+      </div>
+      <div class="pricing-plan popular">
+        <div class="plan-name">Pro Tier</div>
+        <div class="plan-price">
+          $29<span style="font-size: 1rem">/month</span>
+        </div>
+        <ul class="plan-features">
+          <li>Advanced Features</li>
+          <li>Unlimited Users</li>
+          <li>10 GB Storage</li>
+          <li>24/7 Priority Support</li>
+        </ul>
+        <button class="plan-button2">Upgrade Now</button>
+      </div>
+      <div class="pricing-plan popular">
+        <div class="plan-name">Pro Tier</div>
+        <div class="plan-price">
+          $300<span style="font-size: 1rem">/year</span>
+        </div>
+        <ul class="plan-features">
+          <li>Advanced Features</li>
+          <li>Unlimited Users</li>
+          <li>10 GB Storage</li>
+          <li>24/7 Priority Support</li>
+        </ul>
+        <button class="plan-button2">Upgrade Now</button>
+      </div>
+    </div>
+
+    <!--Table View-->
+    <hr />
+    <div class="tableheading">
+      <h2>
+        <b
+          ><mark class="px-2 text-white bg-blue-600 rounded dark:bg-orange-500"
+            >NoCode</mark
+          >
+          Tools Database 🔥</b
+        >
+      </h2>
+    </div>
+    <hr />
+
+    <div class="tablediv">
+      <iframe
+        src="https://v2-embednotion.com/b9cc3890319949fc903230ebb1b640d4"
+        style="
+          width: 70%;
+          height: 700px;
+          border: 1px solid white;
+          border-radius: 10px;
+          padding: none;
+        "
+      ></iframe>
+    </div>
+    <br /><br />
+
+    <footer>
+      <div class="footercontent">
+        <p>Formyproject.com &copy; All rights reserved Aryaneel Shivam</p>
+        <p><span style="color: darkgrey">Contact: +91 7099152511</span></p>
+        <p>
+          <span style="color: darkgrey">Email: aryaneelshivam@gmail.com</span>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Get modal element
+        var modal = document.getElementById("contactAlertModal");
+
+        // Get button that opens the modal
+        var popupBtn = document.getElementById("popupBtn");
+
+        // Get the cancel button to close the modal
+        var cancelBtn = document.getElementById("cancelBtn");
+
+        // When the user clicks the button, open the modal
+        popupBtn.onclick = function () {
+          modal.classList.remove("hidden"); // Show the modal
+        };
+
+        // When the user clicks the cancel button, close the modal
+        cancelBtn.onclick = function () {
+          modal.classList.add("hidden"); // Hide the modal
+        };
+
+        // When the user submits the form
+        document.getElementById("contactForm").onsubmit = function (event) {
+          event.preventDefault();
+          alert("Form submitted successfully!");
+          modal.classList.add("hidden"); // Hide the modal after submission
+        };
+      });
+    </script>
+  </body>
+</html>
